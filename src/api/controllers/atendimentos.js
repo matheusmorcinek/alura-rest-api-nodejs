@@ -4,4 +4,9 @@ module.exports = app => {
 
         respose.send('Você está na rota atendimentos e está realizando um GET');
     });
+
+    app.post('/atendimentos', (request, response) => {
+
+        response.send('Você está na rota atendimentos e está realizando um POST');
+    });
 };
