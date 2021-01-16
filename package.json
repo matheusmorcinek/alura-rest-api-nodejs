@@ -23,6 +23,7 @@
   "devDependencies": {
     "body-parser": "^1.19.0",
     "consign": "^0.1.6",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.7"
   }
 }
