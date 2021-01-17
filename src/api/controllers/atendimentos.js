@@ -3,9 +3,16 @@ const Atendimento = require('../../models/atendimentos');
 
 module.exports = app => {
 
-    app.get('/atendimentos', (request, respose) => {
+    app.get('/atendimentos', (request, response) => {
 
-        respose.send('Você está na rota atendimentos e está realizando um GET');
+        Atendimento.lista(response);
+    });
+
+    app.get('/atendimentos/:id', (request, response) => {
+
+        const id = parseInt(request.params.id);
+
+        Atendimento.buscaPorId(id, response); 
     });
 
     app.post('/atendimentos', (request, response) => {
