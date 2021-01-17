@@ -1,4 +1,3 @@
-const atendimentos = require('../../models/atendimentos');
 const Atendimento = require('../../models/atendimentos');
 
 module.exports = app => {
@@ -22,5 +21,21 @@ module.exports = app => {
         Atendimento.adicona(atendimento, response);
 
         // response.send('Você está na rota atendimentos e está realizando um POST');
+    });
+
+    app.patch('/atendimentos/:id', (request, response) => {
+
+        const id = parseInt(request.params.id);
+
+        const valores = request.body;
+
+        Atendimento.altera(id, valores, response);
+    });
+
+    app.delete('/atendimentos/:id', (request, response) => {
+
+        const id = parseInt(request.params.id);
+
+        Atendimento.deleta(id, response);
     });
 };

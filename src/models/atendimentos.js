@@ -45,7 +45,7 @@ class Atendimento {
                     response.status(400).json(erro);
                 } else {
 
-                    response.status(201).json(resultados);
+                    response.status(201).json(atendimento);
                 }
             });
         }
@@ -85,6 +85,43 @@ class Atendimento {
             }
         });
 
+    }
+
+    altera(id, valores, response) {
+
+        if (valores.data) {
+
+            valores.data = moment(valores.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS');
+        }
+
+        const sql = 'UPDATE Atendimentos SET ? WHERE id = ?';
+
+        conexao.query(sql, [valores, id], (erro, resultados) => {
+
+            if (erro) {
+
+                response.status(400).json(erro);
+            } else {
+
+                response.status(200).json({ ...valores, id });
+            }
+        });
+    }
+
+    deleta(id, response) {
+
+        const sql = 'DELETE FROM Atendimentos WHERE id = ?'
+
+        conexao.query(sql, id, (erro, resultados) => {
+
+            if (erro) {
+
+                response.status(400).json(erro);
+            } else {
+
+                response.status(200).json({ id });
+            }
+        });
     }
 }
 
