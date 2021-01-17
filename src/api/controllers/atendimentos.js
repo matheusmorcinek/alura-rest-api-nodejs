@@ -12,8 +12,8 @@ module.exports = app => {
 
         const atendimento = request.body;
 
-        Atendimento.adicona(atendimento);
+        Atendimento.adicona(atendimento, response);
 
-        response.send('Você está na rota atendimentos e está realizando um POST');
+        // response.send('Você está na rota atendimentos e está realizando um POST');
     });
 };

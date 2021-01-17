@@ -3,7 +3,7 @@ const moment = require('moment');
 
 class Atendimento {
 
-    adicona(atendimento) {
+    adicona(atendimento, response) {
 
         const dataCriacao = new Date();
         // const dataCriacao = moment().format('YYYY-MM-DD HH:MM:SS');
@@ -17,10 +17,10 @@ class Atendimento {
 
             if (erro) {
 
-                console.log(erro);
+                response.status(400).json(erro);
             } else {
 
-                console.log(resultados);
+                response.status(201).json(resultados);
             }
         });
 
